@@ -37,6 +37,11 @@ class vim::params {
       $test_editor_set = 'eselect editor show|grep /usr/bin/vim'
       $conf            = '/etc/vimrc'
     }
+    archlinux: {
+      $package         = 'vim'
+      $set_as_default  = false
+      $conf            = '/etc/vimrc'
+    }
     default: {
       case $::operatingsystem {
         default: {
