@@ -63,6 +63,10 @@
 #     Hash containing key maps that will be set on VIM.
 #     Default: {}
 #
+#   [*opt_autocmds*]
+#     Hash containing autocmds that will be set on VIM.
+#     Default: ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
+#
 # Actions:
 #   Installs vim and, if enabled, set it as default editor.
 #
@@ -88,6 +92,7 @@ class vim(
   $opt_syntax       = $vim::params::syntax,
   $opt_misc         = $vim::params::misc,
   $opt_maps         = $vim::params::maps,
+  $opt_autocmds     = $vim::params::autocmds,
 ) inherits vim::params {
 
   case $ensure {

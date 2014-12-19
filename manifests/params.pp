@@ -6,6 +6,7 @@ class vim::params {
   $syntax       = true
   $misc         = ['hlsearch','showcmd','showmatch','ignorecase','smartcase','incsearch','autowrite','hidden']
   $maps         = {}
+  $autocmds     = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
   case $::osfamily {
     debian: {
       $package         = 'vim-nox'

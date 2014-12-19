@@ -11,13 +11,16 @@ if has("syntax")
 endif
 <% end -%>
 if has("autocmd")
-  <% if @opt_lastposition -%>
+<% @opt_autocmds.each do |autocmd| -%>
+  au <%= autocmd %>
+<% end -%>
+<% if @opt_lastposition -%>
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  <% end -%>
+<% end -%>
   autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-  <% if @opt_indent -%>
+<% if @opt_indent -%>
   filetype plugin indent on
-  <% end -%>
+<% end -%>
 endif
 
 <% @opt_misc.each do |option| -%>
