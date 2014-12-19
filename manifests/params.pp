@@ -8,7 +8,7 @@ class vim::params {
   $maps                = {}
   $autocmds            = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
   $statusline_enabled  = true
-  $statusline          = '%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P'
+  $statusline          = "%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P"
   case $::osfamily {
     debian: {
       $package         = 'vim-nox'
