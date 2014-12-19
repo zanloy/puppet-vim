@@ -67,6 +67,14 @@
 #     Hash containing autocmds that will be set on VIM.
 #     Default: ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
 #
+#   [*statusline_enabled*]
+#     If set to 'true' then statusline is shown.
+#     Default: true
+#
+#   [*statusline*]
+#     The statusline to be displayed if enabled.
+#     Default: %t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+#
 # Actions:
 #   Installs vim and, if enabled, set it as default editor.
 #
@@ -78,21 +86,23 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class vim(
-  $set_as_default   = $vim::params::set_as_default,
-  $ensure           = 'present',
-  $autoupgrade      = false,
-  $package          = $vim::params::package,
-  $set_editor_cmd   = $vim::params::set_editor_cmd,
-  $test_editor_set  = $vim::params::test_editor_set,
-  $conf_file        = $vim::params::conf,
-  $opt_bg_shading   = $vim::params::background,
-  $opt_indent       = $vim::params::indent,
-  $opt_lastposition = $vim::params::lastposition,
-  $opt_powersave    = $vim::params::powersave,
-  $opt_syntax       = $vim::params::syntax,
-  $opt_misc         = $vim::params::misc,
-  $opt_maps         = $vim::params::maps,
-  $opt_autocmds     = $vim::params::autocmds,
+  $set_as_default     = $vim::params::set_as_default,
+  $ensure             = 'present',
+  $autoupgrade        = false,
+  $package            = $vim::params::package,
+  $set_editor_cmd     = $vim::params::set_editor_cmd,
+  $test_editor_set    = $vim::params::test_editor_set,
+  $conf_file          = $vim::params::conf,
+  $opt_bg_shading     = $vim::params::background,
+  $opt_indent         = $vim::params::indent,
+  $opt_lastposition   = $vim::params::lastposition,
+  $opt_powersave      = $vim::params::powersave,
+  $opt_syntax         = $vim::params::syntax,
+  $opt_misc           = $vim::params::misc,
+  $opt_maps           = $vim::params::maps,
+  $opt_autocmds       = $vim::params::autocmds,
+  $statusline_enabled = $vim::params::statusline_enabled,
+  $statusline         = $vim::params::statusline,
 ) inherits vim::params {
 
   case $ensure {

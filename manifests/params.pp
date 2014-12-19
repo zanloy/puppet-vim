@@ -1,12 +1,14 @@
 class vim::params {
-  $background   = 'dark'
-  $lastposition = true
-  $indent       = true
-  $powersave    = true
-  $syntax       = true
-  $misc         = ['hlsearch','showcmd','showmatch','ignorecase','smartcase','incsearch','autowrite','hidden']
-  $maps         = {}
-  $autocmds     = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
+  $background          = 'dark'
+  $lastposition        = true
+  $indent              = true
+  $powersave           = true
+  $syntax              = true
+  $misc                = ['hlsearch','showcmd','showmatch','ignorecase','smartcase','incsearch','autowrite','hidden']
+  $maps                = {}
+  $autocmds            = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
+  $statusline_enabled  = true
+  $statusline          = '%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P'
   case $::osfamily {
     debian: {
       $package         = 'vim-nox'
@@ -17,18 +19,18 @@ class vim::params {
       $conf            = '/etc/vim/vimrc'
     }
     redhat: {
-      $package        = 'vim-enhanced'
-      $set_as_default = false
-      $conf           = '/etc/vimrc'
+      $package         = 'vim-enhanced'
+      $set_as_default  = false
+      $conf            = '/etc/vimrc'
     }
     freebsd: {
-      $package        = 'vim-lite'
-      $set_as_default = false
+      $package         = 'vim-lite'
+      $set_as_default  = false
     }
     suse: {
-      $package        = 'vim'
-      $set_as_default = false
-      $conf           = '/etc/vimrc'
+      $package         = 'vim'
+      $set_as_default  = false
+      $conf            = '/etc/vimrc'
     }
     gentoo: {
       $package         = 'app-editors/vim'

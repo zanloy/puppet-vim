@@ -35,6 +35,10 @@ map <%= k %> <%= v %>
 let &guicursor = &guicursor . ",a:blinkon0"
 <% end -%>
 
+<% if @statusline_enabled -%>
+set statusline=<%= @statusline %>
+<% end -%>
+
 <% if @osfamily == 'Debian' -%>
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
