@@ -17,17 +17,20 @@
 #
 #   [*package*]
 #     Name of the package.
-#     Only set this, if your platform is not supported or you know, what you're doing.
+#     Only set this, if your platform is not supported or you know,
+#       what you're doing.
 #     Default: auto-set, platform specific
 #
 #   [*set_editor_cmd*]
 #     Command to set editor as default editor.
-#     Only set this, if your platform is not supported or you know, what you're doing.
+#     Only set this, if your platform is not supported or you know,
+#       what you're doing.
 #     Default: auto-set, platform specific
 #
 #   [*test_editor_set*]
 #     Command to check, if editor is set as default.
-#     Only set this, if your platform is not supported or you know, what you're doing.
+#     Only set this, if your platform is not supported or you know,
+#       what you're doing.
 #     Default: auto-set, platform specific
 #
 #   [*conf_file*]
@@ -35,12 +38,14 @@
 #     Default: /etc/vim/vimrc (Debian), /etc/vimrc (RedHat)
 #
 #   [*opt_bg_shading*]
-#     Terminal background colour. This affects the colour scheme used by VIM to do syntax highlighting.
+#     Terminal background colour. This affects the colour scheme
+#       used by VIM to do syntax highlighting.
 #     Valid values are either 'dark' or 'light'.
 #     Default: dark
 #
 #   [*opt_indent*]
-#     If true, Vim loads indentation rules and plugins according to the detected filetype.
+#     If true, Vim loads indentation rules and plugins according to
+#       the detected filetype.
 #     Default: true
 #
 #   [*opt_lastposition*]
