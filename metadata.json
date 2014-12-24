@@ -1,41 +1,24 @@
 {
-  "name": "saz-vim",
-  "version": "2.3.2",
-  "author": "saz",
+  "name": "zanloy-vim",
+  "version": "2.3.3",
+  "author": "zanloy",
   "summary": "Manage VIM via puppet.",
   "license": "Apache License, Version 2.0",
-  "source": "https://github.com/saz/puppet-vim",
-  "project_page": "https://github.com/saz/puppet-vim",
-  "issues_url": "https://github.com/saz/puppet-vim/issues",
-  "description": "Vim is an advanced text editor that seeks to provide the power of the de-facto Unix editor Vi, with a more complete feature set. This module aims to enable easy installation and configuration of VIM through class parameters on different platforms, in a way that the administrator can easily set it up differently according to need and/or personal taste.",
-  "dependencies": [
-  
-  ],
+  "source": "https://github.com/zanloy/puppet-vim",
+  "project_page": "https://github.com/zanloy/puppet-vim",
+  "issues_url": "https://github.com/zanloy/puppet-vim/issues",
+  "description": "VIM is an advanced text editor. This module aims to enable easy installation and configuration of VIM. This is a fork of saz/vim.",
+  "dependencies": [],
   "operatingsystem_support": [
-    {
-      "operatingsystem": "RedHat"
-    },
-    {
-      "operatingsystem": "CentOS"
-    },
-    {
-      "operatingsystem": "OracleLinux"
-    },
-    {
-      "operatingsystem": "Scientific"
-    },
-    {
-      "operatingsystem": "Debian"
-    },
-    {
-      "operatingsystem": "Ubuntu"
-    },
-    {
-      "operatingsystem": "Gentoo"
-    },
-    {
-      "operatingsystem": "FreeBSD"
-    }
+    {"operatingsystem": "ArchLinux"},
+    {"operatingsystem": "CentOS"},
+    {"operatingsystem": "Debian"},
+    {"operatingsystem": "FreeBSD"}
+    {"operatingsystem": "Gentoo"},
+    {"operatingsystem": "OracleLinux"},
+    {"operatingsystem": "RedHat"},
+    {"operatingsystem": "Suse"},
+    {"operatingsystem": "Ubuntu"},
   ],
-  "tags": ["Debian", "Ubuntu", "Gentoo", "RedHat", "VIM", "Editor", "FreeBSD", "CentOS"]
+  "tags": ["ArchLinux", "CentOS", "Debian", "FreeBSD", "Gentoo", "RedHat", "Suse", "Ubuntu"]
 }

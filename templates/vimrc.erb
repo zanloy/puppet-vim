@@ -1,42 +1,42 @@
 " vimrc: Managed by puppet - DO NOT EDIT
-" Changes manually to this file can, and will, be lost
+" Changes to this file can, and will, be lost
 
 <% if @osfamily == 'Debian' -%>
 runtime! debian.vim
 <% end -%>
-<% if @opt_syntax == true -%>
-set background=<%= @opt_bg_shading %>
+set background=<%= @opt_bg_shading_real %>
+<% if @opt_syntax_real == true -%>
 if has("syntax")
   syntax on
 endif
 <% end -%>
 if has("autocmd")
-<% @opt_autocmds.each do |autocmd| -%>
+<% @opt_autocmds_real.each do |autocmd| -%>
   au <%= autocmd %>
 <% end -%>
-<% if @opt_lastposition -%>
+<% if @opt_lastposition_real -%>
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 <% end -%>
   autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-<% if @opt_indent -%>
+<% if @opt_indent_real -%>
   filetype plugin indent on
 <% end -%>
 endif
 
-<% @opt_misc.each do |option| -%>
+<% @opt_misc_real.each do |option| -%>
 set <%= option %>
 <% end -%>
 
-<% @opt_maps.each do |k,v| -%>
+<% @opt_maps_real.each do |k,v| -%>
 map <%= k %> <%= v %>
 <% end -%>
 
-<% if @opt_powersave -%>
+<% if @opt_powersave_real -%>
 let &guicursor = &guicursor . ",a:blinkon0"
 <% end -%>
 
-<% if @statusline_enabled -%>
-set statusline=<%= @statusline %>
+<% if @opt_statusline_real != '' -%>
+set statusline=<%= @opt_statusline_real %>
 <% end -%>
 
 <% if @osfamily == 'Debian' -%>
