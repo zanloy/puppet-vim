@@ -13,12 +13,12 @@
     {"operatingsystem": "ArchLinux"},
     {"operatingsystem": "CentOS"},
     {"operatingsystem": "Debian"},
-    {"operatingsystem": "FreeBSD"}
+    {"operatingsystem": "FreeBSD"},
     {"operatingsystem": "Gentoo"},
     {"operatingsystem": "OracleLinux"},
     {"operatingsystem": "RedHat"},
     {"operatingsystem": "Suse"},
-    {"operatingsystem": "Ubuntu"},
+    {"operatingsystem": "Ubuntu"}
   ],
   "tags": ["ArchLinux", "CentOS", "Debian", "FreeBSD", "Gentoo", "RedHat", "Suse", "Ubuntu"]
 }
