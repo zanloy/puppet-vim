@@ -1,9 +1,9 @@
 {
   "name": "zanloy-vim",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "author": "zanloy",
   "summary": "Manage VIM via puppet.",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/zanloy/puppet-vim",
   "project_page": "https://github.com/zanloy/puppet-vim",
   "issues_url": "https://github.com/zanloy/puppet-vim/issues",
@@ -19,6 +19,5 @@
     {"operatingsystem": "RedHat"},
     {"operatingsystem": "Suse"},
     {"operatingsystem": "Ubuntu"}
-  ],
-  "tags": ["ArchLinux", "CentOS", "Debian", "FreeBSD", "Gentoo", "RedHat", "Suse", "Ubuntu"]
+  ]
 }
