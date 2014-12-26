@@ -56,6 +56,8 @@ class vim::params {
     }
   }
 
+  $ensure           = 'present'
+  $autoupgrade      = false
   # vimrc default options
   $opt_bg_shading   = 'dark'
   $opt_indent       = true
