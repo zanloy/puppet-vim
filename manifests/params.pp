@@ -6,9 +6,9 @@ class vim::params {
     archlinux: {
       $package         = 'vim'
       $editor_name     = 'vim'
-      $set_as_default  = true
-      $set_editor_cmd  = "eselect editor set /usr/bin/${editor_name}"
-      $test_editor_set = "eselect editor show|grep /usr/bin/${editor_name}"
+      $set_as_default  = false
+      $set_editor_cmd  = '/bin/true'
+      $test_editor_set = '/bin/true'
       $conf_file       = '/etc/vimrc'
     }
     debian: {
