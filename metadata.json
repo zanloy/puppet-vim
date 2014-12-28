@@ -1,6 +1,6 @@
 {
   "name": "zanloy-vim",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "author": "zanloy",
   "summary": "Manage VIM via puppet.",
   "license": "Apache-2.0",
