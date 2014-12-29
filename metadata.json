@@ -8,7 +8,10 @@
   "project_page": "https://github.com/zanloy/puppet-vim",
   "issues_url": "https://github.com/zanloy/puppet-vim/issues",
   "description": "VIM is an advanced text editor. This module aims to enable easy installation and configuration of VIM. This is a fork of saz/vim.",
-  "dependencies": [],
+  "dependencies": [
+    {"name":"puppetlabs/concat","version_requirement":">= 1.1.2"}
+    {"name":"maestrodev/wget","version_requirement":">= 1.5.7"}
+  ],
   "operatingsystem_support": [
     {"operatingsystem": "ArchLinux"},
     {"operatingsystem": "CentOS"},

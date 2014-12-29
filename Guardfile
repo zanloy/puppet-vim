@@ -1,8 +1,9 @@
-#ignore %r{^spec/fixtures/$}
 directories %w{manifests spec}
 
-#guard 'rake', task: 'rspec' do
-guard 'rspec', cmd: 'rspec --color --format documentation' do
+`rake spec_prep`
+
+#guard 'rspec', cmd: 'rspec --color --format doc' do
+guard 'rake', task: 'spec' do
   # Classes
   watch(%r{^manifests/(.+)\.pp$}) do |m|
     "spec/classes/#{m[1]}_spec.rb"

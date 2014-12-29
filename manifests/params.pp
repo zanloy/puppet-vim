@@ -58,6 +58,7 @@ class vim::params {
 
   $ensure           = 'present'
   $autoupgrade      = false
+
   # vimrc default options
   $opt_bg_shading   = 'dark'
   $opt_indent       = true
@@ -74,6 +75,6 @@ class vim::params {
                         'hidden']
   $opt_maps         = {}
   $opt_autocmds     = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
-  $opt_statusline   = "%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P"
+  $opt_statusline   = ''#'%t[%{strlen(&fenc)?&fenc:''none''},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P'
 
 }

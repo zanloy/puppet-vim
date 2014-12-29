@@ -12,7 +12,7 @@ osfamilies = {
 describe 'vim' do
   osfamilies.each do |osfamily, values|
     context "on #{osfamily}" do
-      let(:facts) { { osfamily: osfamily } }
+      let(:facts) { { osfamily: osfamily, concat_basedir: '/tmp' } }
       context 'installs vim' do
         it { should contain_package(values[:package]) }
       end
@@ -26,7 +26,7 @@ describe 'vim' do
       end
       context 'create vimrc with custom values' do
         let(:params) do
-	  { opt_bg_shading: 'light', \
+	        { opt_bg_shading: 'light', \
             opt_indent: false, \
             opt_lastposition: false, \
             opt_powersave: false, \
