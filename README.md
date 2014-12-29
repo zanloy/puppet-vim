@@ -1,4 +1,6 @@
-# puppet-vim [![Build Status](https://travis-ci.org/zanloy/puppet-vim.svg?branch=master)](https://travis-ci.org/zanloy/puppet-vim)
+# puppet-vim
+
+[![Build Status](https://travis-ci.org/zanloy/puppet-vim.svg?branch=master)](https://travis-ci.org/zanloy/puppet-vim)
 
 Manage VIM via puppet.
 
