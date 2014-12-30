@@ -1,13 +1,12 @@
-# vim:
 define vim::plugin (
   $user,
-  $home = undef,
-  $url
+  $url,
+  $home = 'UNSET'
 ) {
- 
+
   validate_string($user, $url)
 
-  if $home == undef {
+  if $home == 'UNSET' {
     if $user == 'root' {
       $home_real = '/root'
     } else {
@@ -20,7 +19,7 @@ define vim::plugin (
   exec { "${user}-${title}":
     creates => "${home_real}/.vim/bundle/${title}",
     command => "/usr/bin/git clone ${url} ${home_real}/.vim/bundle/${title}",
-    user => $user,
+    user    => $user,
   }
 
 }
