@@ -1,11 +1,13 @@
 runtime! <%= @osfamily.downcase %>.vim
 
 set background=<%= @opt_bg_shading %>
+
 <% if @opt_syntax == true -%>
 if has("syntax")
   syntax on
 endif
 <% end -%>
+
 if has("autocmd")
 <% @opt_autocmds.each do |autocmd| -%>
   au <%= autocmd %>

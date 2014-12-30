@@ -2,4 +2,3 @@
 Gemfile.lock
 pkg/
 *.swp
-.DS_Store

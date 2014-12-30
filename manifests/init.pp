@@ -49,40 +49,17 @@ class vim (
     ensure => $package_ensure,
   }
 
-  #file { $conf_file:
-  #  ensure  => $file_ensure,
-  #  content => template('vim/vimrc.erb'),
-  #}
-  concat { $conf_file:
-    owner => 'root',
-    group => 'root',
-    mode  => '0644',
-  }
-
-  concat::fragment { 'conf_header':
-    target => $conf_file,
-    content => '" vimrc: Managed by puppet - DO NOT EDIT',
-    order => '01',
-  }
-
-  define vim::fragment($content="", $order='10') {
-    if $content == "" {
-      $body = $name
-    } else {
-      $body = $content
-    }
-
-    concat::fragment{ "vimrc_fragment_${name}":
-      target => $conf_file,
-      order => $order,
-      content => $body,
-    }
-  }
-
-  concat::fragment { 'vimrc_fragment_main':
-    target => $conf_file,
-    order => '50',
-    content => template('vim/vimrc.erb'),
+  class { 'vim::config':
+    conf_file        => $conf_file,
+    opt_bg_shading   => $opt_bg_shading,
+    opt_indent       => $opt_indent,
+    opt_lastposition => $opt_lastposition,
+    opt_powersave    => $opt_powersave,
+    opt_syntax       => $opt_syntax,
+    opt_misc         => $opt_misc,
+    opt_maps         => $opt_maps,
+    opt_autocmds     => $opt_autocmds,
+    opt_statusline   => $opt_statusline,
   }
 
   if $set_as_default {
