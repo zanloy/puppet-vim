@@ -5,7 +5,7 @@ class vim::pathogen (
 
   #validate_string($user)
 
-  include ::wget
+  #include wget
 
   if $home == undef {
     if $user == 'root' {
@@ -23,11 +23,28 @@ class vim::pathogen (
     owner  => $user,
   }
 
-  # Install pathogen.vim
-  wget::fetch { 'wget-pathogen':
-    source      => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim',
-    destination => "${home_real}/.vim/autoload/pathogen.vim",
-    require     => File["${home_real}/.vim/autoload/pathogen.vim"],
+  ## Install pathogen.vim
+  #wget::fetch { 'wget-pathogen':
+  #  source      => 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim',
+  #  destination => "${home_real}/.vim/autoload/pathogen.vim",
+  #  nocheckcertificate => true,
+  #  require => File["${home_real}/.vim/autoload"],
+  #}
+
+  exec { 'curl-pathogen':
+    creates => "${home_real}/.vim/autoload/pathogen.vim",
+    command => "/bin/curl -LSso ${home_real}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim",
+  }
+
+  file { "${home_real}/.vim/autoload/pathogen.vim":
+    owner => $user,
+    require => Exec['curl-pathogen'],
+  }
+
+  file { "${home_real}/.vimrc":
+    ensure => file,
+    content => "execute pathogen#infect()\n",
+    owner => $user,
   }
 
 }

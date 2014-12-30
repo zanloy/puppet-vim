@@ -20,9 +20,9 @@ describe 'vim::pathogen' do
 
       context 'downloads pathogen.vim' do
         it do
-          should contain_wget__fetch('wget-pathogen')
-            .with_source('https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim')
-            .with_destination("#{values[:expected_home]}/.vim/autoload/pathogen.vim")
+          should contain_exec('curl-pathogen')
+            .with_command("/bin/curl -LSso #{values[:expected_home]}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim")
+            .with_creates("#{values[:expected_home]}/.vim/autoload/pathogen.vim")
         end
       end
     end

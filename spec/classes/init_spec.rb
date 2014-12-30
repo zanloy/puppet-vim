@@ -19,6 +19,30 @@ describe 'vim' do
       context 'manages vimrc' do
         it { should contain_file(values[:conf_file]) }
       end
+      context 'creates vimrc with default values' do
+        it { should contain_file(values[:conf_file]).with_content(/^\s*set background=dark$/) }
+        it { should contain_file(values[:conf_file]).with_content(/^\s*filetype indent on$/) }
+        it { should contain_file(values[:conf_file]).with_content(/^\s*au BufReadPost .*$/) }
+        it { should contain_file(values[:conf_file]).with_content(/^\s*let &guicursor = &guicursor . ",a:blinkon0"$/) }
+        it { should contain_file(values[:conf_file]).with_content(/^\s*syntax on$/) }
+        it { should contain_file(values[:conf_file]).with_content(/^\s*set statusline=/) }
+      end 
+      context 'create vimrc with custom values' do
+        let(:params) do
+          { opt_bg_shading: 'light', \
+            opt_indent: false, \
+            opt_lastposition: false, \
+            opt_powersave: false, \
+            opt_syntax: false, \
+            opt_statusline: '' }
+        end
+        it { should contain_file(values[:conf_file]).with_content(/^\s*set background=light$/) }
+        it { should contain_file(values[:conf_file]).without_content(/^\s*filetype plugin indent on$/) }
+        it { should contain_file(values[:conf_file]).without_content(/^\s*au BufReadPost .*$/) }
+        it { should contain_file(values[:conf_file]).without_content(/^\s*let &guicursor = &guicursor . ",a:blinkon0"$/) }
+        it { should contain_file(values[:conf_file]).without_content(/^\s*syntax on$/) }
+        it { should contain_file(values[:conf_file]).without_content(/^\s*set statusline=/) }
+      end
       context 'sets vim as default editor' do
         if values.has_key? :editor_set
           it { should contain_exec(values[:editor_set]) }

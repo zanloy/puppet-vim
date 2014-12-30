@@ -1,42 +1,96 @@
-runtime! <%= @osfamily.downcase %>.vim
+" vimrc: managed by puppet - DO NOT EDIT
+" add customization to <%= File.dirname(@conf_file) %>/vimrc.local
 
-set background=<%= @opt_bg_shading %>
+" use utf-8 when available
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
+" set options
+set nocompatible        " use enhanced vim features
+set hlsearch            " highlight last search term (turn off with :noh)
+set showcmd             " show additional text for current command at the bottom
+set showmatch           " highlight matching quote, paren, or bracket
+set ignorecase          " ignore case when searching
+set smartcase           " smart case sensitivity during search
+set incsearch           " show search result as you type
+set autowrite           " automatically save when switching vim buffers
+set hidden              " hides buffers instead of closing them
+set bs=indent,eol,start " allow backspacing over everything in insert mode
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more
+                        " than 50 lines of registers
+set history=50          " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+<% @opt_misc.each do |option| -%>
+set <%= option %>
+<% end -%>
+ 
 <% if @opt_syntax == true -%>
+" turn on syntax highlighting
 if has("syntax")
   syntax on
 endif
 <% end -%>
 
+filetype plugin on
+<% if @opt_indent -%>
+filetype indent on
+<% end -%>
+
 if has("autocmd")
+  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+  autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+<% if @opt_lastposition -%>
+  " store last cursor position in file
+  au BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+<% end -%>
 <% @opt_autocmds.each do |autocmd| -%>
   au <%= autocmd %>
 <% end -%>
-<% if @opt_lastposition -%>
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-<% end -%>
-  autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-<% if @opt_indent -%>
-  filetype plugin indent on
-<% end -%>
 endif
-
-<% @opt_misc.each do |option| -%>
-set <%= option %>
-<% end -%>
 
 <% @opt_maps.each do |k,v| -%>
 map <%= k %> <%= v %>
 <% end -%>
 
+" cscope for source code browsing
+if has("cscope") && filereadable("/usr/bin/cscope")
+  set csprg=/usr/bin/cscope
+  set csto=0
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add $PWD/cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+endif
+
 <% if @opt_powersave -%>
+" Turn off blinking cursor to stop wake on activity on some hardware.
 let &guicursor = &guicursor . ",a:blinkon0"
 <% end -%>
 
+" TODO: Is this even needed?
+" Set background for colorschemes
+set background=<%= @opt_bg_shading %>
+
 <% if @opt_statusline != '' -%>
-set statusline=<%= @opt_statusline %>
+if has("statusline")
+  set laststatus=2
+  set statusline=<%= @opt_statusline %>
+endif
 <% end -%>
 
+" Load local vimrc options if exists.
 if filereadable("<%= File.dirname(@conf_file) %>/vimrc.local")
   source <%= File.dirname(@conf_file) %>/vimrc.local
 endif
+
+" vim:filetype=vim

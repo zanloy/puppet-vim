@@ -6,8 +6,10 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure(2) do |config|
-  config.vm.box = "puppetlabs-centos-6.5"
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box"
+  #config.vm.box = "puppetlabs-centos-6.5"
+  #config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box"
+  #config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "chef/centos-7.0"
 
   config.vm.synced_folder ".", "/etc/puppet/modules/vim"
 

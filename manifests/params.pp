@@ -65,16 +65,9 @@ class vim::params {
   $opt_lastposition = true
   $opt_powersave    = true
   $opt_syntax       = true
-  $opt_misc         = ['hlsearch',
-                        'showcmd',
-                        'showmatch',
-                        'ignorecase',
-                        'smartcase',
-                        'incsearch',
-                        'autowrite',
-                        'hidden']
+  $opt_misc         = []
   $opt_maps         = {}
   $opt_autocmds     = ['FileType python setlocal shiftwidth=4 tabstop=4 backspace=4']
-  $opt_statusline   = ''#'%t[%{strlen(&fenc)?&fenc:''none''},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P'
+  $opt_statusline   = "%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\\ %P"
 
 }

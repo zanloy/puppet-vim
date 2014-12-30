@@ -49,17 +49,10 @@ class vim (
     ensure => $package_ensure,
   }
 
-  class { 'vim::config':
-    conf_file        => $conf_file,
-    opt_bg_shading   => $opt_bg_shading,
-    opt_indent       => $opt_indent,
-    opt_lastposition => $opt_lastposition,
-    opt_powersave    => $opt_powersave,
-    opt_syntax       => $opt_syntax,
-    opt_misc         => $opt_misc,
-    opt_maps         => $opt_maps,
-    opt_autocmds     => $opt_autocmds,
-    opt_statusline   => $opt_statusline,
+  file { $conf_file:
+    content => template('vim/vimrc.erb'),
+    owner   => 'root',
+    mode    => '0644',
   }
 
   if $set_as_default {
