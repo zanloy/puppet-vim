@@ -11,10 +11,10 @@ Install VIM and use the provided configuration defaults
 ```
 class { 'vim': }
 ```
-Turn on line numbering while keeping the default opt_misc values
+Turn on line numbering
 ```
 class { 'vim':
-  opt_misc => ['hlsearch','showcmd','showmatch','ignorecase','smartcase','incsearch','autowrite','hidden','number'],
+  opt_misc => ['number'],
 }
 ```
 Set F5 key to save and execute current file
@@ -95,8 +95,7 @@ class { 'vim':
 
 * opt_misc
   * Accepted values: array
-  * Default: ['hlsearch','showcmd','showmatch','ignorecase','smartcase',
-    'incsearch','autowrite','hidden']
+  * Default: []
   * Description: Array containing options that will be set on VIM. Anything
     contained here will show as a "set option" line in your vimrc.
 
@@ -107,4 +106,4 @@ class { 'vim':
     vimrc.
 
 ## Acknowlegments
-This module was forked from the one originally written by [Saz](https://github.com/saz/puppet-vim). It adds enterprise linux support and configuration file management, which were not present on the original at the time of the first release.
+This module was forked from the one originally written by [Saz](https://github.com/saz/puppet-vim). It adds enterprise linux support and configuration file management, which were not present.
