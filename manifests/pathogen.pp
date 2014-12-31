@@ -1,6 +1,6 @@
 define vim::pathogen (
   $user = $name,
-  $home = undef,
+  $home = 'UNSET',
 ) {
 
   validate_string($user)
@@ -11,7 +11,7 @@ define vim::pathogen (
     }
   }
 
-  if $home == undef {
+  if $home == 'UNSET' {
     if $user == 'root' {
       $home_real = '/root'
     } else {
