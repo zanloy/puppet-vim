@@ -8,22 +8,50 @@ Vim is an advanced text editor that seeks to provide the power of the de-facto U
 
 ## Sample Usage
 Install VIM and use the provided configuration defaults
+
 ```
 class { 'vim': }
 ```
+
 Turn on line numbering
+
 ```
 class { 'vim':
   opt_misc => ['number'],
 }
 ```
+
 Set F5 key to save and execute current file
+
 ```
 class { 'vim':
   opt_maps => { '<F5>': '<Esc>:w<CR>:!%:p<CR>' },
 }
 ```
+
+Install [pathogen](https://github.com/tpope/vim-pathogen) for user 'johndoe'
+
+```
+vim::pathogen { 'johndoe': }
+```
+
+Install a plugin for user 'johndoe'.
+Using [vim-commentary](https://github.com/tpope/vim-commentary) as an example.
+Be sure to install pathogen or the plugins won't load in vim for that user.
+
+```
+vim::plugin { 'vim-commentary': url => 'https://github.com/tpope/vim-commentary.git' }
+```
+
+Install a bundle of plugins recommended by this module's author. Note: this
+with install pathogen for the user so that it will not be necessary.
+
+```
+vim::bundle { 'johndoe': }
+```
+
 Uninstall vim
+
 ```
 class { 'vim':
   ensure => absent,
