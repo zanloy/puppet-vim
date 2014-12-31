@@ -50,6 +50,15 @@ install pathogen for the user so defining it will not be necessary.
 vim::bundle { 'johndoe': }
 ```
 
+Change colorscheme for user johndoe to grb256 (installed with bundle)
+
+```
+vim::config { 'colorscheme':
+  user    => 'johndoe',
+  content => 'colorscheme grb256',
+}
+```
+
 Uninstall vim
 
 ```

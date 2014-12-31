@@ -41,7 +41,7 @@ define vim::pathogen (
   vim::config { 'pathogen':
     user    => $user,
     content => 'execute pathogen#infect()',
-    order   => "01",
+    order   => '01',
   }
 
   File["${home_real}/.vim"] ~> File["${home_real}/.vim/autoload"] ~> File["${home_real}/.vim/bundle"] ~> Exec['curl-pathogen'] ~> File["${home_real}/.vim/autoload/pathogen.vim"]
