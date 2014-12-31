@@ -31,12 +31,11 @@ define vim::pathogen (
     creates => "${home_real}/.vim/autoload/pathogen.vim",
     path    => ['/bin', '/usr/bin', '/usr/local/bin'],
     command => "curl -LSso ${home_real}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim",
-    require => [Package['curl'], File["${home_real}/.vim/autoload"]],
+    require => Package['curl'],
   }
 
   file { "${home_real}/.vim/autoload/pathogen.vim":
     owner   => $user,
-    require => Exec['curl-pathogen'],
   }
 
   file { "${home_real}/.vimrc":
@@ -44,5 +43,7 @@ define vim::pathogen (
     content => "execute pathogen#infect()\n",
     owner   => $user,
   }
+
+  File["${home_real}/.vim"] ~> File["${home_real}/.vim/autoload"] ~> File["${home_real}/.vim/bundle"] ~> Exec['curl-pathogen'] ~> File["${home_real}/.vim/autoload/pathogen.vim"]
 
 }
