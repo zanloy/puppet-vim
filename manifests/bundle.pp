@@ -1,5 +1,5 @@
 define vim::bundle (
-  $user,
+  $user = $name,
   $home = 'UNSET'
 ) {
 
