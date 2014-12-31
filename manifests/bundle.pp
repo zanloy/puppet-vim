@@ -5,7 +5,7 @@ define vim::bundle (
 
   validate_string($user)
 
-  vim::pathogen { $user: { home => $home } }
+  vim::pathogen { $user: home => $home }
 
   $plugins = { 
     'nerdtree'         => { url => 'https://github.com/scrooloose/nerdtree.git' },
