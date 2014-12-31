@@ -5,7 +5,7 @@ define vim::pathogen (
 
   validate_string($user)
 
-  if (!defined(Package['curl'])) {
+  if ! defined(Package['curl']) {
     package { 'curl':
       ensure => present,
     }
@@ -30,6 +30,7 @@ define vim::pathogen (
   exec { 'curl-pathogen':
     creates => "${home_real}/.vim/autoload/pathogen.vim",
     command => "/bin/curl -LSso ${home_real}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim",
+    require => Package['curl'],
   }
 
   file { "${home_real}/.vim/autoload/pathogen.vim":
