@@ -29,7 +29,8 @@ define vim::pathogen (
 
   exec { 'curl-pathogen':
     creates => "${home_real}/.vim/autoload/pathogen.vim",
-    command => "${vim::params::curl_cmd} -LSso ${home_real}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim",
+    path    => ['/bin', '/usr/bin', '/usr/local/bin'],
+    command => "curl -LSso ${home_real}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim",
     require => Package['curl'],
   }
 
