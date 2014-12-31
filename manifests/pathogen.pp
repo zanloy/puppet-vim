@@ -1,11 +1,9 @@
-class vim::pathogen (
-  $user = undef,
+define vim::pathogen (
+  $user = $name,
   $home = undef,
 ) {
 
-  #validate_string($user)
-
-  #include wget
+  validate_string($user)
 
   if $home == undef {
     if $user == 'root' {

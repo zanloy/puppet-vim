@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'vim::plugin', type: :define do
+describe 'vim::plugin', :type => :define do
   context 'creates git cmd' do
     let(:title) { 'vim-commentary' }
     let(:params) { {user: 'user1', url: 'https://github.com/tpope/vim-commentary.git'} }
