@@ -10,6 +10,7 @@ class vim::params {
       $set_editor_cmd  = '/bin/true'
       $test_editor_set = '/bin/true'
       $conf_file       = '/etc/vimrc'
+      $curl_cmd        = '/usr/bin/curl'
     }
     debian: {
       $package         = 'vim-nox'
@@ -18,6 +19,7 @@ class vim::params {
       $set_editor_cmd  = "update-alternatives --set editor /usr/bin/${editor_name}"
       $test_editor_set = "test /etc/alternatives/editor -ef /usr/bin/${editor_name}"
       $conf_file       = '/etc/vim/vimrc'
+      $curl_cmd        = '/usr/bin/curl'
     }
     freebsd: {
       $package         = 'vim-lite'
@@ -26,6 +28,7 @@ class vim::params {
       $set_editor_cmd  = '/bin/true'
       $test_editor_set = '/bin/true'
       $conf_file       = '/etc/vimrc'
+      $curl_cmd        = '/usr/bin/curl'
     }
     gentoo: {
       $package         = 'app-editors/vim'
@@ -34,6 +37,7 @@ class vim::params {
       $set_editor_cmd  = "eselect editor set /usr/bin/${editor_name}"
       $test_editor_set = "eselect editor show|grep /usr/bin/${editor_name}"
       $conf_file       = '/etc/vimrc'
+      $curl_cmd        = '/usr/bin/curl'
     }
     redhat: {
       $package         = 'vim-enhanced'
@@ -42,6 +46,7 @@ class vim::params {
       $set_editor_cmd  = '/bin/true'
       $test_editor_set = '/bin/true'
       $conf_file       = '/etc/vimrc'
+      $curl_cmd        = '/bin/curl'
     }
     suse: {
       $package         = 'vim'
@@ -50,6 +55,7 @@ class vim::params {
       $set_editor_cmd  = '/bin/true'
       $test_editor_set = '/bin/true'
       $conf_file       = '/etc/vimrc'
+      $curl_cmd        = '/usr/bin/curl'
     }
     default: {
       fail("Unsupported platform: osfamily = ${::osfamily}")
