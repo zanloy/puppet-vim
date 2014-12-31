@@ -7,7 +7,7 @@ define vim::bundle (
 
   vim::pathogen { $user: home => $home }
 
-  $plugins = { 
+  $plugins = {
     'nerdtree'         => { url => 'https://github.com/scrooloose/nerdtree.git' },
     'syntastic'        => { url => 'https://github.com/scrooloose/syntastic.git'},
     'vim-airline'      => { url => 'https://github.com/bling/vim-airline' },
