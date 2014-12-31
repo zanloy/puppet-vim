@@ -18,7 +18,8 @@ define vim::plugin (
 
   exec { "${user}-${title}":
     creates => "${home_real}/.vim/bundle/${title}",
-    command => "/usr/bin/git clone ${url} ${home_real}/.vim/bundle/${title}",
+    path    => ['/bin', '/usr/bin'],
+    command => "git clone ${url} ${home_real}/.vim/bundle/${title}",
     user    => $user,
   }
 

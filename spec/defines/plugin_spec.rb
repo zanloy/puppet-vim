@@ -7,7 +7,7 @@ describe 'vim::plugin', :type => :define do
     it do
       should contain_exec('user1-vim-commentary')
         .with_creates('/home/user1/.vim/bundle/vim-commentary')
-        .with_command('/usr/bin/git clone https://github.com/tpope/vim-commentary.git /home/user1/.vim/bundle/vim-commentary')
+        .with_command('git clone https://github.com/tpope/vim-commentary.git /home/user1/.vim/bundle/vim-commentary')
         .with_user('user1')
     end
   end
