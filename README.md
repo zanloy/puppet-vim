@@ -43,8 +43,8 @@ Be sure to install pathogen or the plugins won't load in vim for that user.
 vim::plugin { 'vim-commentary': url => 'https://github.com/tpope/vim-commentary.git' }
 ```
 
-Install a bundle of plugins recommended by this module's author. Note: this
-with install pathogen for the user so that it will not be necessary.
+Install a bundle of plugins recommended by this module's author. This will
+install pathogen for the user so defining it will not be necessary.
 
 ```
 vim::bundle { 'johndoe': }
