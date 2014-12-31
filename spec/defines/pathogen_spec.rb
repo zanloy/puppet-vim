@@ -19,7 +19,7 @@ describe 'vim::pathogen', :type => :define do
       context 'downloads pathogen.vim' do
         it do
           should contain_exec('curl-pathogen')
-            .with_command("/bin/curl -LSso #{values[:expected_home]}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim")
+            .with_command("curl -LSso #{values[:expected_home]}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim")
             .with_creates("#{values[:expected_home]}/.vim/autoload/pathogen.vim")
         end
       end
