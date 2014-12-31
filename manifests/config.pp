@@ -22,6 +22,8 @@ define vim::config (
   if ! defined(Concat[$vimrc]) {
     concat { $vimrc:
       ensure => present,
+      owner  => $user,
+      mode   => '0644',
     }
   }
 
