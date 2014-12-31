@@ -1,3 +1,9 @@
+# This is a manifest to install plugins recommended
+# by the author <zan.loy@gmail.com>
+#
+# If you have any great vim plugins that you like,
+# please drop me a line and I'll look at it.
+#
 define vim::bundle (
   $user = $name,
   $home = 'UNSET'
@@ -5,7 +11,9 @@ define vim::bundle (
 
   validate_string($user)
 
-  vim::pathogen { $user: home => $home }
+  if ! defined(Vim::Pathogen[$user]) {
+    vim::pathogen { $user: home => $home }
+  }
 
   $plugins = {
     'nerdtree'          => { url => 'https://github.com/scrooloose/nerdtree.git' },

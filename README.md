@@ -50,6 +50,12 @@ install pathogen for the user so defining it will not be necessary.
 vim::bundle { 'johndoe': }
 ```
 
+_Note: The bundle installs [vim-airline](https://github.com/bling/vim-airline) which
+is a statusline replacement. By default it tries to use some special characters
+to make it pretty. I initially had issues with getting these to work. Read
+this [wiki](https://github.com/bling/vim-airline/wiki/FAQ) for answers on why
+you don't have colors or special symbols._
+
 Change colorscheme for user johndoe to grb256 (installed with bundle)
 
 ```
