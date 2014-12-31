@@ -5,6 +5,12 @@ define vim::pathogen (
 
   validate_string($user)
 
+  if (!defined(Package['curl'])) {
+    package { 'curl':
+      ensure => present,
+    }
+  }
+
   if $home == undef {
     if $user == 'root' {
       $home_real = '/root'
