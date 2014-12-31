@@ -9,6 +9,7 @@ testcases = {
 describe 'vim::pathogen', :type => :define do
   testcases.each do |name, values|
     context "using test case '#{name}'" do
+      let(:facts) { { concat_basedir: '/tmp' } }
       let(:title) { values[:user] }
       let(:params) { values[:params] }
       context 'creates proper directories' do
@@ -21,6 +22,12 @@ describe 'vim::pathogen', :type => :define do
           should contain_exec('curl-pathogen')
             .with_command("curl -LSso #{values[:expected_home]}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim")
             .with_creates("#{values[:expected_home]}/.vim/autoload/pathogen.vim")
+        end
+      end
+      context 'adds pathogen#infect to .vimrc' do
+        it do
+          should contain_vim__config('pathogen')
+            .with_content('execute pathogen#infect()')
         end
       end
     end
