@@ -19,6 +19,7 @@ define vim::bundle (
     'nerdtree'          => { url => 'https://github.com/scrooloose/nerdtree.git' },
     'syntastic'         => { url => 'https://github.com/scrooloose/syntastic.git'},
     'vim-airline'       => { url => 'https://github.com/bling/vim-airline.git' },
+    'vim-bufferline'    => { url => 'https://github.com/bling/vim-bufferline' },
     'vim-colors-grb256' => { url => 'https://github.com/zanloy/vim-colors-grb256.git' },
     'vim-commentary'    => { url => 'https://github.com/tpope/vim-commentary.git' },
     'vim-endwise'       => { url => 'https://github.com/tpope/vim-endwise.git' },
