@@ -7,6 +7,9 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
 endif
 
 " set options
+set tabstop=2           " Use 2 spaces for tabstops
+set shiftwidth=2        " Use 2 spaces for tabs (indents)
+set expandtab           " Always use spaces instead of tabs
 set nocompatible        " use enhanced vim features
 set hlsearch            " highlight last search term (turn off with :noh)
 set showcmd             " show additional text for current command at the bottom
@@ -38,8 +41,12 @@ filetype indent on
 <% end -%>
 
 if has("autocmd")
-  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+  " don't write swapfile on most commonly used directories for NFS or USB
   autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+  " use actual tab chars in Makefiles.
+  autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+  " use 4 spaces for Python files since this is the norm
+  autocmd FileType python set tabstop=4 shiftwidth=4
 <% if @opt_lastposition -%>
   " store last cursor position in file
   au BufReadPost *
