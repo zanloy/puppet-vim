@@ -16,11 +16,18 @@ define vim::plugin (
     $home_real = $home
   }
 
+  if ! defined(Package['git']) {
+    package { 'git':
+      ensure => present,
+    }
+  }
+
   exec { "${user}-${title}":
     creates => "${home_real}/.vim/bundle/${title}",
     path    => ['/bin', '/usr/bin'],
     command => "git clone ${url} ${home_real}/.vim/bundle/${title}",
     user    => $user,
+    require => Package['git'],
   }
 
 }
