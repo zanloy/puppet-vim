@@ -6,8 +6,9 @@ describe 'vim::plugin', :type => :define do
     let(:params) { {user: 'user1', url: 'https://github.com/tpope/vim-commentary.git'} }
     it do
       should contain_exec('user1-vim-commentary')
-        .with_creates('/home/user1/.vim/bundle/vim-commentary')
-        .with_command('git clone https://github.com/tpope/vim-commentary.git /home/user1/.vim/bundle/vim-commentary')
+        .with_creates('/home/user1/.vim/bundle/vim-commentary/.git')
+        .with_cwd('/home/user1/.vim/bundle')
+        .with_command('git clone https://github.com/tpope/vim-commentary.git vim-commentary')
         .with_user('user1')
     end
   end
