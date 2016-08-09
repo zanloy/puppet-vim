@@ -23,11 +23,12 @@ define vim::plugin (
   }
 
   exec { "${user}-${title}":
-    creates => "${home_real}/.vim/bundle/${title}",
+    creates => "${home_real}/.vim/bundle/${title}/.git",
     path    => ['/bin', '/usr/bin'],
-    command => "git clone ${url} ${home_real}/.vim/bundle/${title}",
+    cwd     => "${home_real}/.vim/bundle",
+    command => "git clone ${url} ${title}",
     user    => $user,
-    require => Package['git'],
+    require => [Package['git'], File["${home_real}/.vim/bundle"]],
   }
 
 }

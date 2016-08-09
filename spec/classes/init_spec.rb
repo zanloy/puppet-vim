@@ -47,7 +47,7 @@ describe 'vim' do
         if values.has_key? :editor_set
           it { should contain_exec(values[:editor_set]) }
         else
-          it { should_not contain_exec }
+          it { should_not contain_exec('empty') }
         end
       end
     end
