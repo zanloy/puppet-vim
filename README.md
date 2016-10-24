@@ -40,7 +40,10 @@ Using [vim-commentary](https://github.com/tpope/vim-commentary) as an example.
 Be sure to install pathogen or the plugins won't load in vim for that user.
 
 ```
-vim::plugin { 'vim-commentary': url => 'https://github.com/tpope/vim-commentary.git' }
+vim::plugin { 'vim-commentary':
+  user => 'johndoe',
+  url  => 'https://github.com/tpope/vim-commentary.git',
+}
 ```
 
 Install a bundle of plugins recommended by this module's author. This will
