@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe 'vim::plugin', :type => :define do
   context 'creates git cmd' do
-    let(:title) { 'vim-commentary' }
+    let(:plugin) { 'vim-commentary' }
+    let(:title) { 'vim-commentary-user1' }
     let(:params) { {user: 'user1', url: 'https://github.com/tpope/vim-commentary.git'} }
     it do
       should contain_exec('user1-vim-commentary')
@@ -13,12 +14,13 @@ describe 'vim::plugin', :type => :define do
     end
   end
   context 'errors without user' do
-    let(:title) { 'vim-commentary' }
+    let(:plugin { 'vim-commentary' }
     let(:params) { { url: 'https://github.com/tpope/vim-commentary.git'} }
     it { expect { should compile }.to raise_error }
   end
   context 'errors without url' do
-    let(:title) { 'vim-commentary' }
+    let(:plugin) { 'vim-commentary' }
+    let(:title) { 'vim-commentary-user1' }
     let(:params) { { user: 'user1'} }
     it { expect { should compile }.to raise_error }
   end
