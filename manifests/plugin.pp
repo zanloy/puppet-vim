@@ -1,6 +1,7 @@
 define vim::plugin (
   $user,
   $url,
+  $plugin,
   $home = 'UNSET'
 ) {
 
@@ -22,11 +23,11 @@ define vim::plugin (
     }
   }
 
-  exec { "${user}-${title}":
-    creates => "${home_real}/.vim/bundle/${title}/.git",
+  exec { "${user}-${plugin}":
+    creates => "${home_real}/.vim/bundle/${plugin}/.git",
     path    => ['/bin', '/usr/bin'],
     cwd     => "${home_real}/.vim/bundle",
-    command => "git clone ${url} ${title}",
+    command => "git clone ${url} ${plugin}",
     user    => $user,
     require => [Package['git'], File["${home_real}/.vim/bundle"]],
   }
